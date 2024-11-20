@@ -2,6 +2,7 @@ package com.eugenia.managers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -14,6 +15,8 @@ public class DriverManager {
     private DriverManager() {
         switch (WEB_DRIVER_TYPE.toUpperCase()) {
             case "CHROME":
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
                 driver = new ChromeDriver();
                 System.out.println("The Chrome driver is opened.");
                 break;
