@@ -4,7 +4,7 @@ import com.eugenia.managers.DriverManager;
 import com.eugenia.managers.RandomDataManager;
 import org.openqa.selenium.*;
 
-public class TestRunner1 {
+public class TestRunnerWithPageObjects {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = DriverManager.getInstance().getDriver();
