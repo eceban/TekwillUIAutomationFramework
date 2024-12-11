@@ -7,6 +7,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Map;
+
 public class RegisterPageSteps {
 
     WebDriver driver = DriverManager.getInstance().getDriver();
@@ -31,5 +33,26 @@ public class RegisterPageSteps {
     @When("the continueButton is clicked")
     public void theContinueButtonIsClicked() {
         registerPage.submitButton();
+    }
+
+    @When("register form is populated as following:")
+    public void registerFormIsPopulatedAsFollowing(Map<String, String> userDetailsMap) {
+        String firstNameValue = userDetailsMap.get("firstName");
+        if (firstNameValue != null && firstNameValue.equalsIgnoreCase("RANDOM")) {
+            firstNameValue = RandomDataManager.getRandomFirstName();
+        }
+        String lastNameValue = userDetailsMap.get("lastName");
+        if (lastNameValue != null && lastNameValue.equalsIgnoreCase("RANDOM")) {
+            lastNameValue = RandomDataManager.getRandomLastName();
+        }
+        String emailValue = userDetailsMap.get("email");
+        if (emailValue != null && emailValue.equalsIgnoreCase("RANDOM")) {
+            emailValue = RandomDataManager.getRandomEmail();
+        }
+        String passwordValue = userDetailsMap.get("password");
+        if (passwordValue != null && passwordValue.equalsIgnoreCase("RANDOM")) {
+            passwordValue = RandomDataManager.getRandomPassword();
+        }
+        registerPage.completeRegisterForm(firstNameValue, lastNameValue, emailValue, passwordValue);
     }
 }

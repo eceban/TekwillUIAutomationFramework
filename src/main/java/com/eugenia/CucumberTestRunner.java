@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/main/java/com/eugenia/features",
         glue = "com.eugenia.step_definitions",
-        tags = "@run"
+        tags = "@runNow"
 )
 
 public class CucumberTestRunner {
